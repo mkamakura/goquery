@@ -37,7 +37,7 @@ func NewDocument(url string) (*Document, error) {
 	}
 
 	if res.StatusCode != 200 {
-		e := errors.New(res.StatusCode)
+		e := errors.New(string(res.StatusCode))
 		return nil, e
 	}
 	return NewDocumentFromResponse(res)
