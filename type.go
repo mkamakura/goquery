@@ -36,7 +36,6 @@ func NewDocument(url string) (*Document, error) {
 		return nil, e
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.78.2 (KHTML, like Gecko) Slack_SSB/1.0.2")
-	
 
 	// Load the URL
 	client := &http.Client{Timeout: time.Duration(30) * time.Second}
