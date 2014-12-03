@@ -30,8 +30,17 @@ func NewDocumentFromNode(root *html.Node) *Document {
 // It loads the specified document, parses it, and stores the root Document
 // node, ready to be manipulated.
 func NewDocument(url string) (*Document, error) {
+
+	req, e := http.NewRequest("GET", url,nil)
+	if e != nil {
+		return nil, e
+	}
+	req.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.78.2 (KHTML, like Gecko) Slack_SSB/1.0.2")
+	
+
 	// Load the URL
-	res, e := http.Get(url)
+	client := &http.Client{Timeout: time.Duration(30) * time.Second}
+	res, e := client.Do(url)
 	if e != nil {
 		return nil, e
 	}
