@@ -40,7 +40,7 @@ func NewDocument(url string) (*Document, error) {
 
 	// Load the URL
 	client := &http.Client{Timeout: time.Duration(30) * time.Second}
-	res, e := client.Do(url)
+	res, e := client.Do(req)
 	if e != nil {
 		return nil, e
 	}
